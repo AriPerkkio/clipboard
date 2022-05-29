@@ -1,0 +1,3 @@
+kv_namespaces = [
+    { binding = "REMIX_CLOUDFLARE_PAGES_WITH_KV", id = "ea387286be1047ed8e91c428d63e9684" }
+]
