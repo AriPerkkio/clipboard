@@ -4,16 +4,11 @@ import { redirect } from "@remix-run/cloudflare";
 import type { ActionFunction, LoaderFunction } from "@remix-run/cloudflare";
 
 import logo from "../logo.svg";
-import styles from "~/styles/index.css";
 import { getCounter, increaseCounter } from "~/models/counter.server";
 import type { Counter } from "~/models/counter.server";
 
 interface LoaderData {
   counter: Counter;
-}
-
-export function links() {
-  return [{ rel: "stylesheet", href: styles }];
 }
 
 export const loader: LoaderFunction = async ({ context }) => {
@@ -32,17 +27,27 @@ export default function Index() {
   const { counter } = useLoaderData<LoaderData>();
 
   return (
-    <main>
-      <img src={logo} alt="logo" />
+    <main className="text-center prose max-w-none flex flex-col justify-center items-center">
+      <img
+        src={logo}
+        alt="logo"
+        style={{ height: "40vmin" }}
+        className="animate-[spin_20s_infinite_linear]"
+      />
 
-      <h1>Hello Remix + Cloudflare Pages + Cloudflare KV!</h1>
+      <h1 className="text mb-5">
+        Hello Remix + Cloudflare Pages + Cloudflare KV!
+      </h1>
 
       <Form method="post">
-        <button type="submit">count is {counter}</button>
+        <button className="btn" type="submit">
+          count is {counter}
+        </button>
       </Form>
 
-      <div className="links">
+      <div className="mt-5">
         <a
+          className="link"
           href="https://remix.run/docs"
           target="_blank"
           rel="noopener noreferrer"
@@ -51,6 +56,7 @@ export default function Index() {
         </a>
         {" | "}
         <a
+          className="link"
           href="https://pages.cloudflare.com/"
           target="_blank"
           rel="noopener noreferrer"
@@ -59,6 +65,7 @@ export default function Index() {
         </a>
         {" | "}
         <a
+          className="link"
           href="https://developers.cloudflare.com/workers/runtime-apis/kv/"
           target="_blank"
           rel="noopener noreferrer"

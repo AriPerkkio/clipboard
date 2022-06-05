@@ -8,7 +8,7 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
-import styles from "~/styles/global.css";
+import styles from "./tailwind.css";
 
 export function links() {
   return [{ rel: "stylesheet", href: styles }];
@@ -22,7 +22,7 @@ export const meta: MetaFunction = () => ({
 
 export default function App() {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="dark">
       <head>
         <Meta />
         <Links />
